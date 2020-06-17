@@ -80,11 +80,12 @@ function initiatives_meta_options(){
 }
 function save_custom(){
     global $post;
+    if( !isset( $post ) || !is_object( $post ) ) return;
     // Past Initiative
     //if(isset($post))
     update_post_meta($post->ID, "past_init", $_POST['past_init']);
 }
-add_action('save_post', 'save_custom');
+add_action('save_post_initiatives', 'save_custom');
 
 add_action('admin_head', 'fix_table_width');
 function fix_table_width() {
